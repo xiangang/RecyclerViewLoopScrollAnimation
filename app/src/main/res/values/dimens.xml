@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="double_color_ball_size">40dp</dimen>
+    <dimen name="double_color_ball_radius">20dp</dimen>
+    <dimen name="double_color_ball_lottery">100dp</dimen>
+    <dimen name="double_color_ball_lottery_radius">50dp</dimen>
+</resources>

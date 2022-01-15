@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval"
+    android:useLevel="false">
+    <solid android:color="@color/color_5187ff" />
+    <stroke
+        android:width="2dp"
+        android:color="@color/white" />
+    <size
+        android:width="@dimen/double_color_ball_lottery"
+        android:height="@dimen/double_color_ball_lottery" />
+</shape>

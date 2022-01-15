@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/double_color_ball_bg"
+    android:layout_width="@dimen/double_color_ball_size"
+    android:layout_height="@dimen/double_color_ball_size"
+    android:background="@drawable/shape_double_color_ball_red"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/double_color_ball_recycler_view"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:gravity="center" />
+
+</LinearLayout>
