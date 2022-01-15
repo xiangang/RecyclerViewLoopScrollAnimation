@@ -1,0 +1,2 @@
+# RecyclerViewLoopScrollAnimation
+适用于Android RecyclerView的循环滚动动画的帮助类，可实现类似于老虎机抽奖，数字滚动等效果。
