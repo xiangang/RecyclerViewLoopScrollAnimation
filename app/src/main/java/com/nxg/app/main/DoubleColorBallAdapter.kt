@@ -54,7 +54,6 @@ class DoubleColorBallAdapter(
         val looperLinearLayoutManager =
             LooperLinearLayoutManager(context, RecyclerView.VERTICAL, false)
         holder.recyclerView.layoutManager = looperLinearLayoutManager
-        LooperLinearLayoutManager(context, RecyclerView.VERTICAL, false)
         holder.recyclerViewLoopScrollAnimation.setConfiguration(holder.recyclerViewLoopScrollAnimationConfiguration)
         holder.recyclerViewLoopScrollAnimation.attachToRecyclerView(holder.recyclerView)
         holder.recyclerViewLoopScrollAnimation.setRecyclerViewScrollAction(object :
