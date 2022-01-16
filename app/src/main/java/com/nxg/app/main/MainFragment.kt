@@ -14,6 +14,7 @@ import com.nxg.app.R
 import com.nxg.app.databinding.MainFragmentBinding
 import com.nxg.loopscrollanimation.RecyclerViewLoopScrollAnimation
 import com.nxg.loopscrollanimation.RecyclerViewScrollAction
+import com.nxg.loopscrollanimation.utils.LogUtil
 
 class MainFragment : Fragment() {
 
@@ -126,26 +127,50 @@ class MainFragment : Fragment() {
         })
         binding.doubleColorBallLottery.setOnClickListener {
             //开始摇号,遍历每一个RecyclerView调用RecyclerViewLoopScrollAnimation.start()
+            val ballsA = viewModel.createSevenDoubleColorBall()
+            LogUtil.i("MainFragment", "ballsA $ballsA")
+            doubleColorBallAdapterA.fakeResult.clear()
+            doubleColorBallAdapterA.fakeResult.addAll(ballsA)
             for ((index, _) in doubleColorBallDataA.withIndex()) {
                 val viewHolder =
                     doubleColorBallRecyclerViewA.findViewHolderForLayoutPosition(index) as DoubleColorBallAdapter.DoubleColorBallViewHolder
                 viewHolder.recyclerViewLoopScrollAnimation.start(0L)
             }
+
+            val ballsB = viewModel.createSevenDoubleColorBall()
+            LogUtil.i("MainFragment", "ballsB $ballsB")
+            doubleColorBallAdapterB.fakeResult.clear()
+            doubleColorBallAdapterB.fakeResult.addAll(ballsB)
             for ((index, _) in doubleColorBallDataB.withIndex()) {
                 val viewHolder =
                     doubleColorBallRecyclerViewB.findViewHolderForLayoutPosition(index) as DoubleColorBallAdapter.DoubleColorBallViewHolder
                 viewHolder.recyclerViewLoopScrollAnimation.start(100L)
             }
+
+            val ballsC = viewModel.createSevenDoubleColorBall()
+            LogUtil.i("MainFragment", "ballsC $ballsC")
+            doubleColorBallAdapterC.fakeResult.clear()
+            doubleColorBallAdapterC.fakeResult.addAll(ballsC)
             for ((index, _) in doubleColorBallDataC.withIndex()) {
                 val viewHolder =
                     doubleColorBallRecyclerViewC.findViewHolderForLayoutPosition(index) as DoubleColorBallAdapter.DoubleColorBallViewHolder
                 viewHolder.recyclerViewLoopScrollAnimation.start(200L)
             }
+
+            val ballsD = viewModel.createSevenDoubleColorBall()
+            LogUtil.i("MainFragment", "ballsD $ballsD")
+            doubleColorBallAdapterD.fakeResult.clear()
+            doubleColorBallAdapterD.fakeResult.addAll(ballsD)
             for ((index, _) in doubleColorBallDataD.withIndex()) {
                 val viewHolder =
                     doubleColorBallRecyclerViewD.findViewHolderForLayoutPosition(index) as DoubleColorBallAdapter.DoubleColorBallViewHolder
                 viewHolder.recyclerViewLoopScrollAnimation.start(300L)
             }
+
+            val ballsE = viewModel.createSevenDoubleColorBall()
+            LogUtil.i("MainFragment", "ballsE $ballsE")
+            doubleColorBallAdapterE.fakeResult.clear()
+            doubleColorBallAdapterE.fakeResult.addAll(ballsE)
             for ((index, _) in doubleColorBallDataE.withIndex()) {
                 val viewHolder =
                     doubleColorBallRecyclerViewE.findViewHolderForLayoutPosition(index) as DoubleColorBallAdapter.DoubleColorBallViewHolder

@@ -1,7 +1,6 @@
 package com.nxg.app.main
 
 import android.content.Context
-import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +19,10 @@ import com.nxg.recyclerview.widget.LooperLinearLayoutManager
 class DoubleColorBallAdapter(
     private val context: Context,
     @LayoutRes var resource: Int,
-    private val data: MutableList<List<TextBean>>
+    private val data: MutableList<List<TextBean>>,
+    var fakeResult: MutableList<String> = mutableListOf()
 ) :
-    RecyclerView.Adapter<DoubleColorBallAdapter.DoubleColorBallViewHolder>(), AnimationAction {
+    RecyclerView.Adapter<DoubleColorBallAdapter.DoubleColorBallViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoubleColorBallViewHolder {
         return DoubleColorBallViewHolder(
@@ -31,14 +31,14 @@ class DoubleColorBallAdapter(
     }
 
     override fun onBindViewHolder(holder: DoubleColorBallViewHolder, position: Int) {
-        if (position < 5) {
+        if (position < 6) {
             holder.doubleColorBallBg.setBackgroundResource(R.drawable.shape_double_color_ball_red)
             val loopScrollViewTextAdapter = LoopScrollViewTextAdapter(
                 context,
                 R.layout.loop_scroll_view_item_text_red,
                 data[position]
             )
-            LogUtil.i("DoubleColorBallAdapter", "i = $position, before ${data[position]}")
+            //LogUtil.i("DoubleColorBallAdapter", "i = $position, before ${data[position]}")
             holder.recyclerView.adapter = loopScrollViewTextAdapter
         } else {
             holder.doubleColorBallBg.setBackgroundResource(R.drawable.shape_double_color_ball_blue)
@@ -47,7 +47,7 @@ class DoubleColorBallAdapter(
                 R.layout.loop_scroll_view_item_text_blue,
                 data[position]
             )
-            LogUtil.i("DoubleColorBallAdapter", "i = $position, before ${data[position]}")
+            //LogUtil.i("DoubleColorBallAdapter", "i = $position, before ${data[position]}")
             holder.recyclerView.adapter = loopScrollViewTextAdapter
 
         }
@@ -63,7 +63,22 @@ class DoubleColorBallAdapter(
             }
 
             override fun findLastVisibleItemPosition(): Int {
-                return looperLinearLayoutManager.findLastVisibleItemPosition()
+                val selectPosition = looperLinearLayoutManager.findLastVisibleItemPosition()
+                //指定号码
+                if (fakeResult.size > 0) {
+                    val adapter = holder.recyclerView.adapter as LoopScrollViewTextAdapter
+                    /*LogUtil.i(
+                        "DoubleColorBallAdapter",
+                        "adapter.dataList[selectPosition].text ${adapter.dataList[selectPosition].text}"
+                    )
+                    LogUtil.i(
+                        "DoubleColorBallAdapter",
+                        "fakeResult[holder.adapterPosition].text ${fakeResult[holder.adapterPosition]}"
+                    )*/
+                    adapter.dataList[selectPosition].text = fakeResult[holder.adapterPosition]
+                    adapter.notifyItemChanged(selectPosition)
+                }
+                return selectPosition
             }
         })
     }
@@ -80,21 +95,4 @@ class DoubleColorBallAdapter(
             scrollAnimatorDuration = 4000L
         }
     }
-
-    override fun startAnimation(delay: Long) {
-
-    }
-}
-
-/**
- * 动画执行接口
- */
-interface AnimationAction {
-
-    /**
-     * 开始执行动画
-     * @param delay 延时时间
-     */
-    fun startAnimation(delay: Long = 0L)
-
 }

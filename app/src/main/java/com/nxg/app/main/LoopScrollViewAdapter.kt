@@ -15,7 +15,7 @@ import com.nxg.app.R
 class LoopScrollViewTextAdapter(
     private val context: Context,
     @LayoutRes var resource: Int,
-    private val dataList: List<TextBean>
+    val dataList: List<TextBean>
 ) :
     RecyclerView.Adapter<LoopScrollViewTextAdapter.ScrollViewTextViewHolder>() {
 
