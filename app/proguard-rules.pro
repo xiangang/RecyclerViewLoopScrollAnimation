@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keep class com.nxg.recyclerview.widget.** {*;}
+-keep class androidx.recyclerview.widget.** {*;}
