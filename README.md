@@ -1,7 +1,7 @@
 # 1.RecyclerViewLoopScrollAnimation项目介绍
  > 🍎 `RecyclerViewLoopScrollAnimation` 适用于Android RecyclerView的循环滚动动画的帮助类，可实现类似于老虎机抽奖，数字滚动等效果。
 
-[![](https://jitpack.io/v/xiangang/RecyclerViewLoopScrollAnimation.svg)](https://jitpack.io/#xiangang/RecyclerViewLoopScrollAnimation)
+[![](https://jitpack.io/v/xiangang/RecyclerViewLoopScrollAnimation.svg)](https://jitpack.io/#xiangang/RecyclerViewLoopScrollAnimation) [![Android CI](https://github.com/xiangang/RecyclerViewLoopScrollAnimation/actions/workflows/android.yml/badge.svg?branch=main)](https://github.com/xiangang/RecyclerViewLoopScrollAnimation/actions/workflows/android.yml)
 
 # 2. 效果展示
 
