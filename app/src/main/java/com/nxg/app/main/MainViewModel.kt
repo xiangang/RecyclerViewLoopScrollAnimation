@@ -20,6 +20,7 @@ class MainViewModel : ViewModel() {
             } else {
                 16
             }
+            LogUtil.i("MainViewModel", "i = $i, bound $bound")
             for (j in 1..bound) {
                 numberList.add(
                     TextBean(
