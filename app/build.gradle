@@ -72,10 +72,11 @@ android {
             signingConfig signingConfigs.release
             multiDexEnabled = true
             versionNameSuffix = ''
-            // 自定义包名
+            // 自定义apk名称
             applicationVariants.all { variant ->
                 variant.outputs.all { output ->
-                    def fileName = "lottery_app_release_${variant.versionName}_${appReleaseTime}.apk"
+                    //def fileName = "lottery_app_release_${variant.versionName}_${appReleaseTime}.apk"
+                    def fileName = "lottery_app.apk"
                     def outFile = output.outputFile
                     if (outFile != null && outFile.name.endsWith('.apk')) {
                         outputFileName = fileName
