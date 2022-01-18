@@ -29,6 +29,6 @@ jobs:
     - name: Upload apk to artifact
       uses: actions/upload-artifact@master
       if: always()
-        with:
-          name: lottery_app*
-          path: ${{github.workspace}}/app/build/outputs/apk/release
+      with:
+        name: lottery_app*
+        path: ${{github.workspace}}/app/build/outputs/apk/release
