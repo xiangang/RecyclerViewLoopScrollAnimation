@@ -31,7 +31,7 @@ jobs:
         url: https://www.pgyer.com/apiv2/app/upload
         method: POST
         forms: '{"_api_key":"${{ secrets.PGYER_API_KEY }}","buildInstallType":1}'
-        fileForms: '{"file":"app/build/outputs/apk/debug/*.apk"}'
+        fileForms: '{"file":"app/build/outputs/apk/release/*.apk"}'
     - name: Upload apk to artifact
       uses: actions/upload-artifact@master
       if: always()
