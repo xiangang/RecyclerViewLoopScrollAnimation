@@ -9,9 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="双色球"
+        android:text="@string/app_name"
         android:textColor="@color/color_f84848"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +26,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/shape_double_color_ball_lottery"
         android:gravity="center"
-        android:text="摇号"
+        android:text="@string/start"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:backgroundTint="@null"
@@ -36,10 +37,11 @@
 
 
     <TextView
+        android:id="@+id/app_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="双色球摇号系统v1.0.0"
+        android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

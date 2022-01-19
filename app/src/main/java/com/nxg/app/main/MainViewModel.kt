@@ -1,14 +1,42 @@
 package com.nxg.app.main
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.nxg.loopscrollanimation.utils.LogUtil
 import java.util.*
-import java.util.stream.Collectors
+import android.content.pm.PackageManager
+import androidx.lifecycle.AndroidViewModel
+import com.nxg.app.utils.AppUtils
 
-class MainViewModel : ViewModel() {
-    //双色球
+
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val _appInfo = MutableLiveData<String>()
+
+    val appInfo: LiveData<String> = _appInfo.apply {
+        value = getAppInfo()
+    }
+
+    private fun getAppInfo(): String {
+        val context = getApplication<AppApplication>().applicationContext
+        var appInfo = AppUtils.getAppName(context) + ":v" + AppUtils.getVersionName(context)
+        if (getAppReleaseTime().isNotEmpty()) {
+            appInfo += "_" + getAppReleaseTime()
+        }
+        return appInfo
+    }
+
+    private fun getAppReleaseTime(): String {
+        val appReleaseTime = ""
+        val context = getApplication<AppApplication>().applicationContext
+        context.packageManager.getApplicationInfo(
+            "com.nxg.app",
+            PackageManager.GET_META_DATA
+        ).metaData.getString("RELEASE_TIME")
+        return appReleaseTime
+    }
+
     private val _doubleColorBallNum = MutableLiveData<MutableList<List<TextBean>>>()
     val doubleColorBallNum: LiveData<MutableList<List<TextBean>>> = _doubleColorBallNum
     private fun createDoubleColorBallNum(): MutableList<List<TextBean>> {

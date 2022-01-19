@@ -41,7 +41,8 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(AppApplication.instance())
+            .create(MainViewModel::class.java)
         _binding = MainFragmentBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val doubleColorBallRecyclerViewA = binding.doubleColorBallRecyclerViewA
@@ -178,6 +179,9 @@ class MainFragment : Fragment() {
             }
 
         }
+        viewModel.appInfo.observe(viewLifecycleOwner, {
+            binding.appInfo.text = it
+        })
         viewModel.refreshDoubleColorBallNum()
         return root
     }
