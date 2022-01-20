@@ -14,7 +14,50 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 // 将keystore.properties文件加载到keystoreProperties对象中
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+println "keystoreProperties->$keystoreProperties"
 
+def getStoreFile = {
+    def storeFile = keystoreProperties['storeFile']
+    if (storeFile == null || storeFile.isEmpty()) {
+        storeFile = '../demo.jks'
+    }
+    return storeFile
+}
+
+def getStorePassword = {
+    def storePassword = keystoreProperties['storePassword']
+    println "storePassword == null || storePassword.isEmpty()->${storePassword == null || storePassword.isEmpty()}"
+    if (storePassword == null || storePassword.isEmpty()) {
+        storePassword = System.getenv("storePassword")
+    }
+    println "storePassword ===== ${storePassword}"
+    return storePassword
+}
+
+def getKeyAlias = {
+    def keyAlias = keystoreProperties['keyAlias']
+    if (keyAlias == null || keyAlias.isEmpty()) {
+        keyAlias = System.getenv("keyAlias")
+    }
+    return keyAlias
+}
+
+def getKeyPassword = {
+    def keyPassword = keystoreProperties['keyPassword']
+    if (keyPassword == null || keyPassword.isEmpty()) {
+        keyPassword = System.getenv("keyPassword")
+    }
+    return keyPassword
+}
+
+println "storePassword->${System.getenv("storePassword")}"
+println "keyAlias->${System.getenv("keyAlias")}"
+println "keyPassword->${System.getenv("keyPassword")}"
+
+println "getStoreFile->${getStoreFile()}"
+println "getStorePassword->${getStorePassword()}"
+println "getKeyAlias->${getKeyAlias()}"
+println "getKeyPassword->${getKeyPassword()}"
 
 android {
     compileSdk 31
@@ -30,24 +73,20 @@ android {
     }
 
     signingConfigs {
+
         release {
-            storeFile keystoreProperties['keyAlias'] != null ? file(keystoreProperties['storeFile']) : file('../demo.jks')
-            storePassword keystoreProperties['storePassword'] != null ? keystoreProperties['storePassword'] : System.getenv("storePassword")
-            keyAlias keystoreProperties['keyAlias'] != null ? keystoreProperties['keyAlias'] : System.getenv("keyAlias")
-            keyPassword keystoreProperties['keyPassword'] != null ? keystoreProperties['keyPassword'] : System.getenv("keyPassword")
+            storeFile file(getStoreFile())
+            storePassword getStorePassword()
+            keyAlias getKeyAlias()
+            keyPassword getKeyPassword()
         }
     }
 
     buildTypes {
         debug {
-            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            shrinkResources true //是否清理无用资源,依赖于minifyEnabled
-            zipAlignEnabled true //是否启用zipAlign压缩
-            signingConfig signingConfigs.release
             manifestPlaceholders = [RELEASE_TIME: getAppReleaseTime()]
             multiDexEnabled = true
-            versionNameSuffix = ''
         }
 
         release {

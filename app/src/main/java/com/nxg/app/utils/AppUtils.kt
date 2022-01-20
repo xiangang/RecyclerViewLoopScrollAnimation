@@ -72,7 +72,7 @@ object AppUtils {
     @Synchronized
     fun getPackageName(context: Context): String? {
         try {
-            val packageManager: PackageManager = context.getPackageManager()
+            val packageManager: PackageManager = context.packageManager
             val packageInfo: PackageInfo = packageManager.getPackageInfo(
                 context.packageName, 0
             )
@@ -93,9 +93,9 @@ object AppUtils {
         var applicationInfo: ApplicationInfo? = null
         try {
             packageManager = context.applicationContext
-                .getPackageManager()
+                .packageManager
             applicationInfo = packageManager.getApplicationInfo(
-                context.getPackageName(), 0
+                context.packageName, 0
             )
         } catch (e: PackageManager.NameNotFoundException) {
             applicationInfo = null
