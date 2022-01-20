@@ -25,9 +25,9 @@ jobs:
 
     - name: Build with Gradle
       run: |
-        export storePassword=${{ github.STOREPASSWORD }}
-        export keyAlias=${{ github.KEYALIAS }}
-        export keyPassword=${{ github.KEYPASSWORD }}
+        export storePassword=${{ secrets.STOREPASSWORD }}
+        export keyAlias=${{ secrets.KEYALIAS }}
+        export keyPassword=${{ secrets.KEYPASSWORD }}
         ./gradlew app:assembleRelease
 
 
