@@ -2,9 +2,12 @@ package com.nxg.loopscrollanimation
 
 import android.animation.Animator
 import android.animation.ValueAnimator
+import android.os.Build
 import android.view.MotionEvent
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.BaseInterpolator
 import android.view.animation.Interpolator
+import androidx.annotation.RequiresApi
 import androidx.dynamicanimation.animation.DynamicAnimation
 import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.dynamicanimation.animation.SpringForce
@@ -54,7 +57,7 @@ open class RecyclerViewLoopScrollAnimation {
         /**
          * 第一阶段的滚动动画的插值器
          */
-        var scrollAnimatorInterpolator = AccelerateDecelerateInterpolator()
+        var scrollAnimatorInterpolator: BaseInterpolator = AccelerateDecelerateInterpolator()
 
         /**
          * 是否开启弹簧动画
@@ -283,6 +286,7 @@ open class RecyclerViewLoopScrollAnimation {
      * 开始执行动画
      * @param delay 延迟时间
      */
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     fun start(delay: Long = 0L) {
         LogUtil.i(TAG, "start function called! ${configuration.scrollAnimatorDuration}")
         if (recyclerViewScrollAction == null) {
