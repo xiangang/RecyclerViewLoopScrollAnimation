@@ -45,7 +45,7 @@ Add the dependency
 
 ```
 dependencies {
-	implementation 'com.github.xiangang:RecyclerViewLoopScrollAnimation:v1.0.0-alpha01'
+	implementation 'com.github.xiangang:RecyclerViewLoopScrollAnimation:v1.0.0-alpha02'
 }
 
 ```
